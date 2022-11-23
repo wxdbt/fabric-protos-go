@@ -98,6 +98,8 @@ type Envelope struct {
 	Payload              []byte          `protobuf:"bytes,1,opt,name=payload,proto3" json:"payload,omitempty"`
 	Signature            []byte          `protobuf:"bytes,2,opt,name=signature,proto3" json:"signature,omitempty"`
 	SecretEnvelope       *SecretEnvelope `protobuf:"bytes,3,opt,name=secret_envelope,json=secretEnvelope,proto3" json:"secret_envelope,omitempty"`
+	LeftBorder	     int32	     `protobuf:"bytes,4,opt,name=leftBorder,json=leftBorder,proto3" json:"leftBorder,omitempty"`
+	RightBorder	     int32	     `protobuf:"bytes,5,opt,name=rightBorder,json=rightBorder,proto3" json:"rightBorder,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -147,6 +149,20 @@ func (m *Envelope) GetSecretEnvelope() *SecretEnvelope {
 		return m.SecretEnvelope
 	}
 	return nil
+}
+
+func (m *Envelope) GetLeftBorder() int32 {
+	if m != nil {
+		return m.LeftBorder
+	}
+	return 0
+}
+
+func (m *Envelope) GetRightBorder() int32 {
+	if m != nil {
+		return m.RightBorder
+	}
+	return 0
 }
 
 // SecretEnvelope is a marshalled Secret
