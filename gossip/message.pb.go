@@ -98,8 +98,8 @@ type Envelope struct {
 	Payload              []byte          `protobuf:"bytes,1,opt,name=payload,proto3" json:"payload,omitempty"`
 	Signature            []byte          `protobuf:"bytes,2,opt,name=signature,proto3" json:"signature,omitempty"`
 	SecretEnvelope       *SecretEnvelope `protobuf:"bytes,3,opt,name=secret_envelope,json=secretEnvelope,proto3" json:"secret_envelope,omitempty"`
-	LeftBorder	     int32	     `protobuf:"bytes,4,opt,name=leftBorder,json=leftBorder,proto3" json:"leftBorder,omitempty"`
-	RightBorder	     int32	     `protobuf:"bytes,5,opt,name=rightBorder,json=rightBorder,proto3" json:"rightBorder,omitempty"`
+	LeftBorder	     []byte	     `protobuf:"bytes,4,opt,name=leftBorder,json=leftBorder,proto3" json:"leftBorder,omitempty"`
+	RightBorder	     []byte	     `protobuf:"bytes,5,opt,name=rightBorder,json=rightBorder,proto3" json:"rightBorder,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -153,16 +153,22 @@ func (m *Envelope) GetSecretEnvelope() *SecretEnvelope {
 
 func (m *Envelope) GetLeftBorder() int32 {
 	if m != nil {
-		return m.LeftBorder
+		bytesBuffer := bytes.NewBuffer(m.LeftBorder)
+    		var x int32
+    		binary.Read(bytesBuffer, binary.BigEndian, &x)
+		return x
 	}
-	return 0
+	return -1
 }
 
 func (m *Envelope) GetRightBorder() int32 {
 	if m != nil {
-		return m.RightBorder
+		bytesBuffer := bytes.NewBuffer(m.RightBorder)
+    		var x int32
+    		binary.Read(bytesBuffer, binary.BigEndian, &x)
+		return x
 	}
-	return 0
+	return -1
 }
 
 // SecretEnvelope is a marshalled Secret
