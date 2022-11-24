@@ -100,8 +100,8 @@ type Envelope struct {
 	Payload              []byte          `protobuf:"bytes,1,opt,name=payload,proto3" json:"payload,omitempty"`
 	Signature            []byte          `protobuf:"bytes,2,opt,name=signature,proto3" json:"signature,omitempty"`
 	SecretEnvelope       *SecretEnvelope `protobuf:"bytes,3,opt,name=secret_envelope,json=secretEnvelope,proto3" json:"secret_envelope,omitempty"`
-	LeftBorder	     []byte	     `protobuf:"bytes,4,opt,name=left_border,json=leftBorder,proto3" json:"left_border,omitempty"`
-	RightBorder	     []byte	     `protobuf:"bytes,5,opt,name=right_border,json=rightBorder,proto3" json:"right_border,omitempty"`
+	Left	     []byte	     `protobuf:"bytes,4,opt,name=left,json=left,proto3" json:"left,omitempty"`
+	Right	     []byte	     `protobuf:"bytes,5,opt,name=right,json=right,proto3" json:"right,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -155,7 +155,7 @@ func (m *Envelope) GetSecretEnvelope() *SecretEnvelope {
 
 func (m *Envelope) GetLeftBorder() int32 {
 	if m != nil {
-		bytesBuffer := bytes.NewBuffer(m.LeftBorder)
+		bytesBuffer := bytes.NewBuffer(m.Left)
     		var x int32
     		binary.Read(bytesBuffer, binary.BigEndian, &x)
 		return x
@@ -165,7 +165,7 @@ func (m *Envelope) GetLeftBorder() int32 {
 
 func (m *Envelope) GetRightBorder() int32 {
 	if m != nil {
-		bytesBuffer := bytes.NewBuffer(m.RightBorder)
+		bytesBuffer := bytes.NewBuffer(m.Right)
     		var x int32
     		binary.Read(bytesBuffer, binary.BigEndian, &x)
 		return x
@@ -176,13 +176,13 @@ func (m *Envelope) GetRightBorder() int32 {
 func (m *Envelope) SetLeftBorder(x int32)  {
 	bytesBuffer := bytes.NewBuffer([]byte{})
 	binary.Write(bytesBuffer, binary.BigEndian, x)
-	m.LeftBorder=bytesBuffer.Bytes()
+	m.Left=bytesBuffer.Bytes()
 }
 
 func (m *Envelope) SetRightBorder(x int32) {
 	bytesBuffer := bytes.NewBuffer([]byte{})
 	binary.Write(bytesBuffer, binary.BigEndian, x)
-	m.RightBorder=bytesBuffer.Bytes()
+	m.Right=bytesBuffer.Bytes()
 }
 
 // SecretEnvelope is a marshalled Secret
