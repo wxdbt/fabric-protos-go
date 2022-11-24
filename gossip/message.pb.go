@@ -173,6 +173,18 @@ func (m *Envelope) GetRightBorder() int32 {
 	return -1
 }
 
+func (m *Envelope) SetLeftBorder(x int32)  {
+	bytesBuffer := bytes.NewBuffer([]byte{})
+	binary.Write(bytesBuffer, binary.BigEndian, x)
+	m.LeftBorder=bytesBuffer.Bytes()
+}
+
+func (m *Envelope) SetRightBorder(x int32) {
+	bytesBuffer := bytes.NewBuffer([]byte{})
+	binary.Write(bytesBuffer, binary.BigEndian, x)
+	m.RightBorder=bytesBuffer.Bytes()
+}
+
 // SecretEnvelope is a marshalled Secret
 // and a signature over it.
 // The signature should be validated by the peer
