@@ -4,7 +4,9 @@
 package gossip
 
 import (
+	"bytes"
 	context "context"
+	"encoding/binary"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	peer "github.com/hyperledger/fabric-protos-go/peer"
