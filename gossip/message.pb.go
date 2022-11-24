@@ -100,8 +100,8 @@ type Envelope struct {
 	Payload              []byte          `protobuf:"bytes,1,opt,name=payload,proto3" json:"payload,omitempty"`
 	Signature            []byte          `protobuf:"bytes,2,opt,name=signature,proto3" json:"signature,omitempty"`
 	SecretEnvelope       *SecretEnvelope `protobuf:"bytes,3,opt,name=secret_envelope,json=secretEnvelope,proto3" json:"secret_envelope,omitempty"`
-	LeftBorder	     []byte	     `protobuf:"bytes,4,opt,name=leftBorder,json=leftBorder,proto3" json:"left_border,omitempty"`
-	RightBorder	     []byte	     `protobuf:"bytes,5,opt,name=rightBorder,json=rightBorder,proto3" json:"right_border,omitempty"`
+	LeftBorder	     []byte	     `protobuf:"bytes,4,opt,name=left_border,json=leftBorder,proto3" json:"left_border,omitempty"`
+	RightBorder	     []byte	     `protobuf:"bytes,5,opt,name=right_border,json=rightBorder,proto3" json:"right_border,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
