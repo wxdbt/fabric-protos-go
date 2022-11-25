@@ -15,7 +15,7 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	peer "github.com/hyperledger/fabric-protos-go-apiv2/peer"
+	peer "github.com/hyperledger/fabric-protos-go/peer"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
